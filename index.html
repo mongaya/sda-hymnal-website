@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0c4d9c" />
+  <meta name="description" content="A modern English and Tagalog hymnal interface for worship planning, music and presentation." />
+  <title>HymnFlow | SDA Hymnal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div><div class="ambient ambient-three"></div>
+  <div class="app-shell">
+    <aside class="sidebar glass" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="HymnFlow home">
+        <span class="brand-mark"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M18 5v17.4a5.3 5.3 0 1 1-2.5-4.5V9l10-2.5v11.9a5.3 5.3 0 1 1-2.5-4.5V4.5L18 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span><strong>HymnFlow<span class="brand-dot">.</span></strong><small>SDA HYMNAL</small></span>
+      </a>
+      <div class="nav-section-label">LIBRARY</div>
+      <nav class="nav-list" id="mainNav">
+        <button class="nav-item active" data-view="home"><span class="nav-ico">⌂</span> Discover</button>
+        <button class="nav-item" data-view="all"><span class="nav-ico">♫</span> All hymns <span class="nav-count" id="libraryCount">0</span></button>
+        <button class="nav-item" data-view="favorites"><span class="nav-ico">♡</span> Favorites</button>
+        <button class="nav-item" data-view="plan"><span class="nav-ico">▤</span> Worship plan</button>
+      </nav>
+      <div class="nav-section-label section-spaced">LANGUAGES</div>
+      <div class="language-stack">
+        <button class="lang-item selected" data-lang="all"><span class="lang-symbol">◎</span> All languages <span class="lang-check">✓</span></button>
+        <button class="lang-item" data-lang="en"><span class="flag-badge">EN</span> English <span class="lang-check">✓</span></button>
+        <button class="lang-item" data-lang="tl"><span class="flag-badge">TL</span> Tagalog <span class="lang-check">✓</span></button>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="daily-card"><span class="daily-spark">✦</span><strong>Make worship beautiful.</strong><p>Find, organize, and present songs in one calm space.</p></div>
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode"><span id="themeIcon">☾</span><span id="themeText">Dark appearance</span><span class="theme-switch"><span></span></span></button>
+      </div>
+    </aside>
+    <main class="main-area" id="home">
+      <header class="topbar">
+        <div class="topbar-title"><span class="eyebrow">WELCOME TO YOUR MUSIC LIBRARY</span><h1 id="pageTitle">Discover hymns <span>✦</span></h1></div>
+        <div class="top-actions"><span class="date-badge" id="todayDate"></span><span class="avatar" aria-label="Guest profile">HF</span></div>
+      </header>
+      <section class="hero" id="hero">
+        <div class="hero-orb hero-orb-one"></div><div class="hero-orb hero-orb-two"></div>
+        <div class="hero-copy"><span class="hero-kicker"><span>✧</span> A NEW WAY TO WORSHIP</span><h2>Every hymn.<br/><em>Every heartfelt moment.</em></h2><p>Your peaceful space to discover English and Tagalog hymns, follow the melody, and prepare for worship.</p><button id="exploreBtn" class="primary-btn">Explore hymns <span>↗</span></button></div>
+        <div class="hero-art" aria-hidden="true"><div class="record-ring record-ring-a"></div><div class="record-ring record-ring-b"></div><div class="floating-note note-one">♫</div><div class="floating-note note-two">♪</div><div class="hero-book"><div class="book-spiral">✦</div><div class="book-lines"><span></span><span></span><span></span></div><span class="book-label">HYMNS OF<br/>HOPE & PRAISE</span><div class="book-decoration">♫</div></div></div>
+      </section>
+      <section class="quick-metrics" aria-label="Library overview"><div class="metric glass"><span class="metric-icon metric-blue">♫</span><div><strong id="metricSongs">0</strong><span>Hymns available</span></div></div><div class="metric glass"><span class="metric-icon metric-cyan">♡</span><div><strong id="metricFavorites">0</strong><span>Your favorites</span></div></div><div class="metric glass"><span class="metric-icon metric-violet">▤</span><div><strong id="metricPlan">0</strong><span>Worship plan</span></div></div></section>
+      <section class="library-section" id="librarySection"><div class="section-heading"><div><span class="eyebrow">YOUR MUSIC COLLECTION</span><h2 id="sectionTitle">Explore the hymnal</h2></div><button class="text-link" id="showAllBtn">View all hymns <span>↗</span></button></div>
+        <div class="controls-row"><label class="search-control glass" for="searchInput"><span class="search-icon">⌕</span><input id="searchInput" type="search" placeholder="Search by hymn title, number or keyword..." autocomplete="off"/><span class="search-shortcut">⌘ K</span></label><div class="filter-control glass" role="group" aria-label="Filter hymns by language"><button class="filter-pill active" data-filter="all">All</button><button class="filter-pill" data-filter="en">English</button><button class="filter-pill" data-filter="tl">Tagalog</button></div></div>
+        <div class="song-grid" id="songGrid" aria-live="polite"></div>
+        <div class="empty-state hidden glass" id="emptyState"><div class="empty-icon">♫</div><h3>No hymns found</h3><p>Try another search or choose a different language.</p><button class="secondary-btn" id="resetFilters">Clear filters</button></div>
+      </section>
+      <footer class="footer"><span>HymnFlow · SDA Hymnal concept</span><span>Built with ♡ for worship · Demo hymns shown</span></footer>
+    </main>
+  </div>
+  <div class="modal-backdrop hidden" id="songModal" role="presentation"><section class="song-modal glass" role="dialog" aria-modal="true" aria-labelledby="detailTitle"><button class="modal-close" id="closeModal" aria-label="Close hymn">×</button><div class="modal-top"><div class="modal-art" id="detailArt"><span>♫</span></div><div class="modal-summary"><span class="eyebrow" id="detailMeta"></span><h2 id="detailTitle"></h2><p id="detailSubtitle"></p><div class="modal-actions"><button class="primary-btn mini" id="audioBtn">▶ Play demo melody</button><button class="outline-btn mini" id="favoriteBtn">♡ Favorite</button><button class="outline-btn mini" id="planBtn">＋ Add to plan</button></div></div></div><div class="modal-divider"></div><div class="detail-toolbar"><div class="tab-group"><button class="detail-tab active" data-tab="lyrics">Lyrics</button><button class="detail-tab" data-tab="notes">Musical notes</button></div><div class="detail-tools"><button class="icon-btn" id="decreaseFont" title="Smaller text" aria-label="Decrease font size">A−</button><button class="icon-btn" id="increaseFont" title="Larger text" aria-label="Increase font size">A＋</button><button class="icon-btn" id="presentBtn" title="Presentation mode" aria-label="Open presentation mode">⛶</button></div></div><div id="lyricsPanel" class="lyrics-panel"></div><div id="notesPanel" class="notes-panel hidden"></div><p class="copyright-note">Demo content only. Replace with correctly licensed or public-domain hymns, arrangements, and recordings.</p></section></div>
+  <div class="presentation hidden" id="presentation" role="dialog" aria-modal="true" aria-label="Lyrics presentation"><div class="presentation-top"><span id="presentationTitle"></span><button id="closePresentation" aria-label="Exit presentation mode">× Exit presentation</button></div><div class="presentation-lyrics" id="presentationLyrics"></div><div class="presentation-bottom"><button id="previousVerse">← Previous</button><span id="verseCounter"></span><button id="nextVerse">Next →</button></div></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
