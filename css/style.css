@@ -42,3 +42,10 @@ body{background:#03080f}
 .collection-note{color:#647d97}
 @media(max-width:1230px){.app{grid-template-columns:210px minmax(0,1fr)}}
 @media(max-width:760px){.app{display:block}.music-hero.intro{padding:28px 20px;min-height:230px}.music-hero h1{font-size:36px;letter-spacing:-1px}.vinyl{height:175px;width:175px}.vinyl-inner{height:66px;width:66px}.intro-symbol{width:200px;height:200px;right:-54px;top:15px}.vinyl-note{font-size:50px}.player{height:80px}.collection{padding:22px 16px}}
+
+/* Official-logo placement: clean flat image, never album-cover photography */
+.sda-brand{background:rgba(25,77,111,.35);border:1px solid rgba(104,214,231,.17);box-shadow:none;border-radius:12px;overflow:hidden}
+.sda-brand img{display:block;width:39px;height:39px;object-fit:contain}
+.sda-vinyl{width:110px;height:110px;background:#eaf5ef;box-shadow:0 0 0 5px #0b2444,0 0 20px rgba(90,215,210,.28)}
+.sda-vinyl img{height:90px;width:90px;object-fit:contain}
+@media(max-width:760px){.sda-vinyl{width:78px;height:78px}.sda-vinyl img{width:67px;height:67px}}
